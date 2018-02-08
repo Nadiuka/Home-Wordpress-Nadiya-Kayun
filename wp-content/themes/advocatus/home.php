@@ -14,16 +14,17 @@ get_header(); ?>
                 <div class="history">
                     <h3><?php echo get_theme_mod('HeaderHistory'); ?></h3>
                     <dl class="history-year clearfix">
-                        <dt>2016 -</dt>
-                        <dd>In hac habitasse platea dictumst Nunc ultricies iaculis luctus Aliquam eget eros eget sapien
-                            dictum.
-                        </dd>
-                        <dt>2015 -</dt>
-                        <dd>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</dd>
-                        <dt>2014 -</dt>
-                        <dd>In hac habitasse platea dictumst Nunc ultricies iaculis luctus Aliquam eget eros eget
-                            sapien.
-                        </dd>
+                        <?php
+                        $args = [
+                            'post_type' => 'history'
+                        ];
+                        query_posts($args);
+                        while (have_posts()) : the_post();
+
+                            get_template_part('template-parts/content', 'history');
+                        endwhile;
+                        wp_reset_query();
+                        ?>
                     </dl>
                 </div>
                 <div class="expertise">
@@ -43,43 +44,18 @@ get_header(); ?>
                 <div class="number">02</div>
             </div>
             <ul class="practis clearfix">
-                <li class="service">
-                    <div class="service-icon"><i class="fa fa-handshake-o" aria-hidden="true"></i></div>
-                    <div class="practis-item">
-                        <h3>Private Client Service</h3>
-                        <p>Lorem ipLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                            tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-                            accusam.</p>
-                    </div>
-                </li>
-                <li class="labour">
-                    <div class="labour-icon"><i class="fa fa-wrench" aria-hidden="true"></i></div>
-                    <div class="practis-item">
-                        <h3>LABOUR AND EMPLOYMENT</h3>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt
-                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.</p>
-                    </div>
-                </li>
-                <li class="sequre">
-                    <div class="sequre-icon"><i class="fa fa-desktop" aria-hidden="true"></i></div>
-                    <div class="practis-item">
-                        <h3>Cyber Sequre</h3>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt
-                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.</p>
-                    </div>
-                </li>
-                <li class="estate">
-                    <div class="estate-icon"><i class="fa fa-home" aria-hidden="true"></i></div>
-                    <div class="practis-item">
-                        <h3>Real Estate</h3>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt
-                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.</p>
-                    </div>
-                </li>
+                <?php
+                $args = [
+                    'post_type' => 'practis'
+                ];
+                query_posts($args);
+                while (have_posts()) : the_post();
+
+                    get_template_part('template-parts/content', 'practis');
+
+                endwhile;
+                wp_reset_query();
+                ?>
             </ul>
         </div>
     </section>
@@ -139,15 +115,17 @@ get_header(); ?>
                     <img class="ceo-alon" src="img/alon.png" alt="alon">
                 </div>
                 <div class="client-opinion">
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut
+                        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                        dolores
                         et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem.Lorem ipsum dolor sit
                         amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>
                     <h3>Alon Smith</h3>
                     <div class="ceo">CEO of AVC Group</div>
                     <div class="dot">
                         <ul class="clearfix">
-                            <li class="active"><a href="#"></a> </li>
+                            <li class="active"><a href="#"></a></li>
                             <li><a href="#"></a></li>
                             <li><a href="#"></a></li>
                         </ul>
@@ -176,11 +154,13 @@ get_header(); ?>
                                 <time>12 Now, 2015</time>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                                accusam
                                 et justo duo dolores et ea rebum.</p>
                             <ul class="comments-share clearfix">
                                 <li class="comments"><a href="#">29 Comments</a></li>
-                                <li class="share"><i class="fa fa-share" aria-hidden="true"></i><a href="#">Share</a></li>
+                                <li class="share"><i class="fa fa-share" aria-hidden="true"></i><a href="#">Share</a>
+                                </li>
                             </ul>
                         </a>
                     </article>
@@ -195,11 +175,13 @@ get_header(); ?>
                                 <time>12 Now, 2015</time>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                                accusam
                                 et justo duo dolores et ea rebum.</p>
                             <ul class="comments-share clearfix">
                                 <li class="comments"><a href="#">29 Comments</a></li>
-                                <li class="share"><i class="fa fa-share" aria-hidden="true"></i><a href="#">Share</a></li>
+                                <li class="share"><i class="fa fa-share" aria-hidden="true"></i><a href="#">Share</a>
+                                </li>
                             </ul>
                         </a>
                     </article>
@@ -214,11 +196,13 @@ get_header(); ?>
                                 <time>12 Now, 2015</time>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                                accusam
                                 et justo duo dolores et ea rebum.</p>
                             <ul class="comments-share clearfix">
                                 <li class="comments"><a href="#">29 Comments</a></li>
-                                <li class="share"><i class="fa fa-share" aria-hidden="true"></i><a href="#">Share</a></li>
+                                <li class="share"><i class="fa fa-share" aria-hidden="true"></i><a href="#">Share</a>
+                                </li>
                             </ul>
                         </a>
                     </article>
@@ -230,4 +214,5 @@ get_header(); ?>
 
 <?php
 get_footer();
+
 
