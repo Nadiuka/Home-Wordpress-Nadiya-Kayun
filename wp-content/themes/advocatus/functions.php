@@ -117,11 +117,26 @@ add_action( 'widgets_init', 'advocatus_widgets_init' );
  * Enqueue scripts and styles.
  */
 function advocatus_scripts() {
-    $styleFile = get_template_directory_uri() . '/css/main.css';
-    wp_register_style(
-        'mystylesheets', $styleFile
+    $jQueryFile = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js';
+    wp_register_script(
+        'jQuery', $jQueryFile
     );
-    wp_enqueue_style('mystylesheets');
+    wp_enqueue_script('jQuery');
+    $flexsladerFile = get_template_directory_uri() . '/flexslider/flexslider.css';
+    wp_register_style(
+        'flexslader-style', $flexsladerFile
+    );
+    wp_enqueue_style('flexslader-style');
+    $flexsladerJsFile = get_template_directory_uri() . '/flexslider/jquery.flexslider.js';
+    wp_register_script(
+        'flexslader-js', $flexsladerJsFile
+    );
+    wp_enqueue_script('flexslader-js');
+    $myJsFile = get_template_directory_uri() . '/js/main.js';
+    wp_register_script(
+        'myjs', $myJsFile
+    );
+    wp_enqueue_script('myjs');
     $fontAwesome = get_template_directory_uri() . '/css/font-awesome.min.css';
     wp_register_style(
         'fontAwesome', $fontAwesome
@@ -137,6 +152,11 @@ function advocatus_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+    $styleFile = get_template_directory_uri() . '/css/main.css';
+    wp_register_style(
+        'mystylesheets', $styleFile
+    );
+    wp_enqueue_style('mystylesheets');
 }
 add_action( 'wp_enqueue_scripts', 'advocatus_scripts' );
 

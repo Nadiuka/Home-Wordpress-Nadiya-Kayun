@@ -69,34 +69,20 @@ get_header(); ?>
                 <div class="number">03</div>
             </div>
             <ul class="attorney clearfix">
-                <li>
-                    <a href="#">
-                        <img src="img/adam.png" alt="adam">
-                        <h3>Adam Suarez</h3>
-                        <div>Attorney General</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="img/lina.png" alt="lina">
-                        <h3>Lina Suarez</h3>
-                        <div>Attorney General</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="img/jems.png" alt="jems">
-                        <h3>Jems Snow</h3>
-                        <div>Attorney General</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="img/linister.png" alt="linister">
-                        <h3>Linister White</h3>
-                        <div>Attorney General</div>
-                    </a>
-                </li>
+                <?php
+                $args = [
+                    'post_type' => 'members',
+                    'orderby' => 'date',
+                    'order' => 'ASC',
+                ];
+                query_posts($args);
+                while (have_posts()) : the_post();
+
+                    get_template_part('template-parts/content', 'members');
+
+                endwhile;
+                wp_reset_query();
+                ?>
             </ul>
         </div>
     </section>
@@ -109,28 +95,21 @@ get_header(); ?>
                 </div>
                 <div class="number">04</div>
             </div>
-            <div class="client clearfix">
-                <div class="client-img">
-                    <img class="yellow-background" src="img/yelloy-background.png" alt="yelloy-background">
-                    <img class="ceo-alon" src="img/alon.png" alt="alon">
-                </div>
-                <div class="client-opinion">
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                        dolores
-                        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem.Lorem ipsum dolor sit
-                        amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>
-                    <h3>Alon Smith</h3>
-                    <div class="ceo">CEO of AVC Group</div>
-                    <div class="dot">
-                        <ul class="clearfix">
-                            <li class="active"><a href="#"></a></li>
-                            <li><a href="#"></a></li>
-                            <li><a href="#"></a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="flexslider client clearfix">
+                <ul class="slides">
+                    <?php
+                    $args = [
+                        'post_type' => 'sayings'
+                    ];
+                    query_posts($args);
+                    while (have_posts()) : the_post();
+
+                        get_template_part('template-parts/content', 'sayings');
+
+                    endwhile;
+                    wp_reset_query();
+                    ?>
+                </ul>
             </div>
         </div>
     </section>
